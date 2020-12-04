@@ -23,7 +23,7 @@ import net.sourceforge.argparse4j.inf.Subparsers;
 import java.io.File;
 
 /**
- * The JoltCliProcessor for Diffy. See https://github.com/bazaarvoice/jolt/blob/master/json-utils/src/main/java/com/bazaarvoice/jolt/Diffy.java
+ * The JoltCliProcessor for Diffy. See https://github.com/bazaarvoice/jolt/blob/master/jolt-core/src/main/java/com/bazaarvoice/jolt/Diffy.java
  * for documentation on  Diffy.
  */
 public class DiffyCliProcessor implements JoltCliProcessor {

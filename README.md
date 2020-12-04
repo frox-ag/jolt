@@ -105,7 +105,7 @@ Our unit tests follow the pattern :
 }
 ```
 
-We read in "input", apply the "spec", and [Diffy](https://github.com/bazaarvoice/jolt/blob/master/json-utils/src/main/java/com/bazaarvoice/jolt/Diffy.java) it against the "expected".
+We read in "input", apply the "spec", and [Diffy](https://github.com/bazaarvoice/jolt/blob/master/jolt-core/src/main/java/com/bazaarvoice/jolt/Diffy.java) it against the "expected".
 
 To learn the Shiftr DSL, examine "input" and "output" json, get an understanding of how data is moving, and *then* look at the transform spec to see how it facilitates the transform.
 
