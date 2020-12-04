@@ -3,7 +3,11 @@
         "string": "the QuIcK brOwn fox",
         "zeroIndex" : 0,
         "threeIndex" : 3,
-        "trimMe" : "  tuna "
+        "trimMe" : "  tuna ",
+        "jsonObject": {
+            "key1": "value1",
+            "key2": "value2"
+        }
     },
 
     "spec": {
@@ -49,7 +53,8 @@
         "trim" :{
             "trimed" : "=trim(@(2,trimMe))"
         },
-        "trimMe" : "=trim"
+        "trimMe" : "=trim",
+        "stringJson" : "=toJsonString(@(2,jsonObject))"
     },
     "context": {
         "value" : "JumpeD OVeR THE laZy dog"
@@ -92,6 +97,11 @@
         },
         "trim" :{
             "trimed" : "tuna"
-        }
+        },
+        "jsonObject": {
+            "key1": "value1",
+            "key2": "value2"
+        },
+        "stringJson": "{\"key1\":\"value1\",\"key2\":\"value2\"}"
     }
 }
