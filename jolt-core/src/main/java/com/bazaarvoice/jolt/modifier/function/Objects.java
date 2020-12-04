@@ -16,6 +16,7 @@
 
 package com.bazaarvoice.jolt.modifier.function;
 
+import com.bazaarvoice.jolt.JsonUtils;
 import com.bazaarvoice.jolt.common.Optional;
 
 import java.util.ArrayList;
@@ -215,7 +216,12 @@ public class Objects {
         }
     }
 
-
+    /**
+     * Returns json String representation of argument, wrapped in Optional
+     */
+    public static Optional<String> toJsonString(Object arg) {
+        return Optional.of( JsonUtils.toJsonString( arg ) );
+    }
 
     public static final class toInteger extends Function.SingleFunction<Integer> {
         @Override
@@ -249,6 +255,13 @@ public class Objects {
         @Override
         protected Optional<String> applySingle( final Object arg ) {
             return Objects.toString( arg );
+        }
+    }
+
+    public static final class toJsonString extends Function.SingleFunction<String> {
+        @Override
+        protected Optional<String> applySingle( final Object arg ) {
+            return Objects.toJsonString( arg );
         }
     }
 
