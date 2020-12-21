@@ -51,9 +51,9 @@ public class ChainrEntry {
         HashMap<String, String> temp = new HashMap<>();
         temp.put( "shift", Shiftr.class.getName() );
         temp.put( "default", Defaultr.class.getName() );
-        temp.put( "modify-overwrite-beta", Modifier.Overwritr.class.getName() );
-        temp.put( "modify-default-beta", Modifier.Defaultr.class.getName() );
-        temp.put( "modify-define-beta", Modifier.Definr.class.getName() );
+        temp.put( "modify-overwrite", Modifier.Overwritr.class.getName() );
+        temp.put( "modify-default", Modifier.Defaultr.class.getName() );
+        temp.put( "modify-define", Modifier.Definr.class.getName() );
         temp.put( "remove", Removr.class.getName() );
         temp.put( "sort", Sortr.class.getName() );
         temp.put( "cardinality", CardinalityTransform.class.getName() );
