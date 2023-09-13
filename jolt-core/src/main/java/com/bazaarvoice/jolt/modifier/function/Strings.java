@@ -16,9 +16,11 @@
 package com.bazaarvoice.jolt.modifier.function;
 
 import com.bazaarvoice.jolt.common.Optional;
-
 import java.util.Arrays;
 import java.util.List;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.safety.Whitelist;
 
 @SuppressWarnings( "deprecated" )
 public class Strings {
@@ -232,5 +234,25 @@ public class Strings {
         } while ( false );
 
         return Optional.empty();
+    }
+
+    public static final class stripHtml extends Function.SingleFunction<String> {
+        @Override
+        protected Optional<String> applySingle( final Object arg ) {
+            if ( ! (arg instanceof String) ) {
+                return Optional.empty();
+            }
+            String argString = (String) arg;
+            Document doc = Jsoup.parse(argString);
+            Document.OutputSettings outputSettings = new Document.OutputSettings().prettyPrint(false);
+            doc.outputSettings(outputSettings);
+            String endLine = "\\r\\n";
+            doc.select("br").before(endLine);
+            doc.select("p").before(endLine);
+            doc.select("li").before(endLine);
+            doc.select("tr").before(endLine);
+            String html = doc.html().replaceAll("\\\\n", "\n").replaceAll("\\\\r", "\r");
+            return Optional.of(Jsoup.clean(html, "", Whitelist.none(), outputSettings).trim());
+        }
     }
 }

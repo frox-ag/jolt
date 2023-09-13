@@ -61,6 +61,7 @@
 
         <!-- TEST -->
         <guava.version>19.0</guava.version>
+        <jsoup.version>1.13.1</jsoup.version>
         <testng.version>6.8.21</testng.version>
         <snapshot-repository-url>${env.DPM_ARTIFACTORY_URL_SNAPSHOT}</snapshot-repository-url>
         <release-repository-url>${env.DPM_ARTIFACTORY_URL_RELEASE}</release-repository-url>
@@ -114,6 +115,11 @@
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
                 <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jsoup</groupId>
+                <artifactId>jsoup</artifactId>
+                <version>${jsoup.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.testng</groupId>
