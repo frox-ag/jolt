@@ -72,6 +72,8 @@ public abstract class Modifier implements SpecDriven, ContextualTransform {
         STOCK_FUNCTIONS.put( "toLong", new Objects.toLong() );
         STOCK_FUNCTIONS.put( "toBoolean", new Objects.toBoolean() );
         STOCK_FUNCTIONS.put( "toString", new Objects.toString() );
+        STOCK_FUNCTIONS.put( "toMap", new Objects.toMap() );
+        STOCK_FUNCTIONS.put( "toList", new Objects.toList() );
         STOCK_FUNCTIONS.put( "toJsonString", new Objects.toJsonString());
         STOCK_FUNCTIONS.put( "size", new Objects.size() );
 
@@ -86,7 +88,6 @@ public abstract class Modifier implements SpecDriven, ContextualTransform {
         STOCK_FUNCTIONS.put( "firstElement", new Lists.firstElement() );
         STOCK_FUNCTIONS.put( "lastElement", new Lists.lastElement() );
         STOCK_FUNCTIONS.put( "elementAt", new Lists.elementAt() );
-        STOCK_FUNCTIONS.put( "toList", new Lists.toList() );
         STOCK_FUNCTIONS.put( "sort", new Lists.sort() );
     }
 

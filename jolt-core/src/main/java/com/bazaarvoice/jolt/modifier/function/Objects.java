@@ -18,7 +18,9 @@ package com.bazaarvoice.jolt.modifier.function;
 
 import com.bazaarvoice.jolt.JsonUtils;
 import com.bazaarvoice.jolt.common.Optional;
-
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -26,6 +28,7 @@ import java.util.Map;
 
 public class Objects {
 
+    private static final ObjectMapper objectMapper = new ObjectMapper();
     /**
      * Given any object, returns, if possible. its Java number equivalent wrapped in Optional
      * Interprets String as Number
@@ -170,6 +173,47 @@ public class Objects {
     }
 
     /**
+     * Returns boolean value of argument, if possible, wrapped in Optional Interprets Strings "true" & "false" as boolean
+     */
+    public static Optional<Map> toMap(Object arg) {
+        if (arg instanceof String) {
+            String input = (String) arg;
+            if (input.startsWith("{") && input.endsWith("}")) {
+                try {
+                    return Optional.of(objectMapper.readValue(input, new TypeReference<Object>() {
+                    }));
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        } else if (arg instanceof Map) {
+            return Optional.of((Map) arg);
+        }
+        return Optional.empty();
+    }
+
+    /**
+     * Returns boolean value of argument, if possible, wrapped in Optional Interprets Strings "true" & "false" as boolean
+     */
+    public static Optional<List> toList(Object arg) {
+        if (arg instanceof String) {
+            String input = (String) arg;
+            if (input.startsWith("[") && input.endsWith("]")) {
+
+                try {
+                    return Optional.of(objectMapper.readValue(input, new TypeReference<Object>() {
+                    }));
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        } else if (arg instanceof List) {
+            return Optional.of((List) arg);
+        }
+        return Optional.empty();
+    }
+
+    /**
      * Squashes nulls in a list or map.
      *
      * Modifies the data.
@@ -278,6 +322,19 @@ public class Objects {
         protected Optional<Object> applySingle( final Object arg ) {
             Objects.recursivelySquashNulls( arg );
             return Optional.of( arg );
+        }
+    }
+    public static final class toMap extends Function.SingleFunction<Map> {
+        @Override
+        protected Optional<Map> applySingle(final Object arg) {
+            return toMap(arg);
+        }
+    }
+
+    public static final class toList extends Function.SingleFunction<List> {
+        @Override
+        protected Optional<List> applySingle(final Object arg) {
+            return toList(arg);
         }
     }
 
