@@ -255,4 +255,21 @@ public class Strings {
             return Optional.of(Jsoup.clean(html, "", Whitelist.none(), outputSettings).trim());
         }
     }
+
+    public static final class replace extends Function.ListFunction {
+
+        @Override
+        protected Optional<Object> applyList(List<Object> argList) {
+            if (argList == null || argList.size() != 3) {
+                return Optional.empty();
+            }
+            if (!(argList.get(0) instanceof String &&
+                argList.get(1) instanceof String &&
+                argList.get(2) instanceof String)) {
+                return Optional.empty();
+            }
+            String argString = (String) argList.get(0);
+            return Optional.of(argString.replaceAll((String) argList.get(1), (String) argList.get(2)));
+        }
+    }
 }
