@@ -111,7 +111,7 @@ public class ArraySortLeafSpec extends ArraySortSpec {
     Object returnValue = null;
     if (input instanceof List) {
       List list = (List) input;
-      if (list.size() > 1) {
+      if (!list.isEmpty()) {
         if (list.get(0) instanceof Map) {
           list.sort(
               (x, y) -> {
