@@ -63,8 +63,8 @@
         <guava.version>19.0</guava.version>
         <jsoup.version>1.13.1</jsoup.version>
         <testng.version>6.8.21</testng.version>
-        <snapshot-repository-url>${env.DPM_ARTIFACTORY_URL_SNAPSHOT}</snapshot-repository-url>
-        <release-repository-url>${env.DPM_ARTIFACTORY_URL_RELEASE}</release-repository-url>
+        <snapshot-repository-url>${env.DPM_ARTIFACTORY_MVN_URL_SNAPSHOT}</snapshot-repository-url>
+        <release-repository-url>${env.DPM_ARTIFACTORY_MVN_URL_RELEASE}</release-repository-url>
     </properties>
 
     <dependencyManagement>
